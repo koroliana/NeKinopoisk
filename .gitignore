@@ -26,6 +26,7 @@ captures/
 # Keystore files
 *.jks
 *.keystore
+/keystore.properties
 
 # Misc
 *.iml

@@ -21,6 +21,25 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val keystoreProperties = mutableMapOf<String, String>()
+
+    val keystoreFile = rootProject.file("keystore.properties")
+    if (keystoreFile.exists()) {
+        keystoreFile.forEachLine { line ->
+            val (key, value) = line.split("=", limit = 2)
+            keystoreProperties[key.trim()] = value.trim()
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+            storePassword = keystoreProperties["storePassword"]
+            keyAlias = keystoreProperties["keyAlias"]
+            keyPassword = keystoreProperties["keyPassword"]
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
