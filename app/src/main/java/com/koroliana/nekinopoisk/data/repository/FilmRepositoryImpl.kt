@@ -1,5 +1,6 @@
 package com.koroliana.nekinopoisk.data.repository
 
+import android.util.Log
 import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.data.entity.Genre
 import com.koroliana.nekinopoisk.data.local.dao.FilmDao
@@ -30,23 +31,24 @@ class FilmRepositoryImpl(
 
         val uniqueGenreNames = filmsDto
             .flatMap { it.genres }
-            .map { it.name }
             .toSet()
 
         val uniqueGenres = uniqueGenreNames
             .mapIndexed { index, name -> Genre(id = index, name = name) }
 
         genreDao.insertGenres(uniqueGenres)
+        Log.i("FilmRepositoryImpl", "Genres added to DB:${uniqueGenres.size}" )
 
         val genreNameToId = uniqueGenres
             .associateBy({ it.name }, { it.id })
 
         val films = filmsDto.map { filmDto ->
-            val genreIds = filmDto.genres.mapNotNull { genreNameToId[it.name] }
+            val genreIds = filmDto.genres.mapNotNull { genreNameToId[it] }
             filmDto.toEntity(genreIds = genreIds)
         }
 
         filmDao.insertFilms(films)
+        Log.i("FilmRepositoryImpl", "Films added to DB:${films.size}" )
     }
 
 }

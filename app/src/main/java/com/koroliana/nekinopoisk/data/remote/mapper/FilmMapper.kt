@@ -10,9 +10,9 @@ fun FilmDto.toEntity(genreIds: List<Int>): Film {
         name = name,
         localizedName = localizedName,
         year = year,
-        rating = rating,
-        imageUrl = imageUrl,
-        description = description,
+        rating = rating?: 0.0,
+        imageUrl = imageUrl?: "",
+        description = description?: "",
         genreIds = GenreIdsList(genreIds)
     )
 }

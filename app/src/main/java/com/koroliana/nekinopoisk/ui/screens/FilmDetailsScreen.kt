@@ -1,5 +1,6 @@
 package com.koroliana.nekinopoisk.ui.screens
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -26,16 +28,29 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.koroliana.nekinopoisk.R
 import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.ui.components.ScreenHeader
 import com.koroliana.nekinopoisk.ui.theme.MainBlue
+import com.koroliana.nekinopoisk.viewmodel.FilmDetailsUiState
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun FilmDetailsScreen(
+    state: FilmDetailsUiState,
     film: Film,
     onBackClick: () -> Unit
 ) {
+    val systemUiController = rememberSystemUiController()
+    val darkIcons = false
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(
+            color = MainBlue,
+            darkIcons = darkIcons
+        )
+    }
 
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
@@ -89,30 +104,31 @@ fun FilmDetailsScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            //todo Это временная заглушка
+            val genresText = state.genreNames.joinToString(", ")
+            val subtitle = if (genresText.isNotEmpty()) {
+                "$genresText, ${film.year}"
+            } else {
+                "${film.year}"
+            }
             Text(
-                      text = "Кукушка, ${film.year}",
-                       style = MaterialTheme.typography.bodyMedium
-                  )
-
-            // val genresText = film.genreIds.joinToString(", ") //todo здесь хранятся ids и они должны по id быть сопоставлены с жанрами видимо, а может нам просто сразу в фильме хранить названия жанров?
-           // Text(
-          //      text = "$genresText, ${film.year}",
-         //       style = MaterialTheme.typography.bodyMedium
-          //  )
+               text = subtitle,
+               style = MaterialTheme.typography.bodyMedium
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             Row(
                 verticalAlignment = Alignment.Bottom
             ){
-                Text(
-                    text = "${film.rating}",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MainBlue
-                )
+                if (film.rating != 0.0) {
+                    Text(
+                        text = String.format("%.1f", film.rating),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MainBlue
+                    )
 
-                Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
 
                 Text(
                     text = "КиноПоиск",

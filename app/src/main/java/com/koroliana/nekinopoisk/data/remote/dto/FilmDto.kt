@@ -12,12 +12,14 @@ data class FilmResponse(
 data class FilmDto(
     val id: Int,
     val name: String,
-    @SerialName("localized_name") val localizedName: String,
+    @SerialName("localized_name")
+    val localizedName: String,
     val year: Int,
-    val rating: Double?,
-    @SerialName("image_url") val imageUrl: String,
-    val description: String,
-    val genres: List<GenreDto>
+    val rating: Double? = null,
+    @SerialName("image_url")
+    val imageUrl: String? = null,
+    val description: String? = null,
+    val genres: List<String>
 )
 
 @Serializable

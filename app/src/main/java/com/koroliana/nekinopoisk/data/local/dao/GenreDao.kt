@@ -8,10 +8,10 @@ import com.koroliana.nekinopoisk.data.entity.Genre
 
 @Dao
 interface GenreDao {
-    @Query("SELECT * FROM genres")
+    @Query("SELECT * FROM genres ORDER BY name COLLATE LOCALIZED ASC")
     suspend fun getAllGenres(): List<Genre>
 
-    @Query("SELECT * FROM genres WHERE id IN (:ids)")
+    @Query("SELECT * FROM genres WHERE id IN (:ids) ORDER BY name COLLATE LOCALIZED ASC")
     suspend fun getGenresByIds(ids: List<Int>): List<Genre>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

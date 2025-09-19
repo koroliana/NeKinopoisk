@@ -10,8 +10,8 @@ import retrofit2.http.GET
 import kotlinx.serialization.json.Json
 
 object HttpRoutes {
-    const val BASE_URL = "https://s3-eu-west-1.amazonaws.com/sequeniatesttask/"
-    const val GET_FILMS = "films.json"
+    const val BASE_URL = "https://s3-eu-west-1.amazonaws.com/"
+    const val GET_FILMS = "sequeniatesttask/films.json"
 }
 
 @OptIn(ExperimentalSerializationApi::class)
@@ -21,9 +21,11 @@ val networkModule = module {
     }
 
     single {
+        val json: Json = get()
+
         Retrofit.Builder()
             .baseUrl(HttpRoutes.BASE_URL)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
             .create(FilmApi::class.java)
     }

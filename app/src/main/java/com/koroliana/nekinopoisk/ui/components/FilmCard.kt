@@ -25,23 +25,6 @@ import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.R
 
 
-/*
-@Composable
-fun FilmItem(
-    name: String,
-    onClick: () -> Unit
-) {
-    Column(
-        modifier = Modifier
-            .clickable { onClick() }
-            .padding(16.dp)
-    ) {
-        Text(text = name)
-    }
-}
-
- */
-
 @Composable
 fun FilmCard(
     film: Film,

@@ -13,7 +13,6 @@ val databaseModule = module {
             klass = FilmDatabase::class.java,
             name = "films.db"
         )
-            .fallbackToDestructiveMigration() // todo убрать
             .build()
     }
 }
