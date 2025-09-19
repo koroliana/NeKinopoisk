@@ -25,6 +25,7 @@ import com.koroliana.nekinopoisk.data.local.entity.Film
 import com.koroliana.nekinopoisk.R
 
 
+/*
 @Composable
 fun FilmItem(
     name: String,
@@ -38,6 +39,8 @@ fun FilmItem(
         Text(text = name)
     }
 }
+
+ */
 
 @Composable
 fun FilmCard(

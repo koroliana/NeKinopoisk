@@ -24,9 +24,11 @@ class FilmListFragment : Fragment() {
                     FilmListScreen(
                         genres = listOf("Фэнтези","Драма","Криминал","Детектив"),
                         selectedGenre = null,
-                        onGenreSelected = {navigateToDetails(parentFragmentManager)},
+                        onGenreSelected = {},
                         isLoading = false,
-                        onFilmClick = {navigateToDetails(parentFragmentManager)},
+                        onFilmClick = { film ->
+                            navigateToDetails(parentFragmentManager, film)
+                        },
                         films = testFilms
                     )
                 }
@@ -35,9 +37,9 @@ class FilmListFragment : Fragment() {
     }
 }
 
-fun navigateToDetails(fragmentManager: FragmentManager) {
+fun navigateToDetails(fragmentManager: FragmentManager, film: Film) {
     fragmentManager.beginTransaction()
-        .replace(R.id.fragment_container, FilmDetailsFragment())
+        .replace(R.id.fragment_container, FilmDetailsFragment.newInstance(film))
         .addToBackStack(null)
         .commit()
 }
@@ -112,7 +114,7 @@ val testFilm = Film(
     year = 1999,
     rating = 9.064,
     imageUrl = "https://st.kp.yandex.net/images/film_iphone/iphone360_435.jpg",
-    description = "Джон Коффи оказывается в блоке смертников...",
+    description = "Обвиненный в страшном преступлении, Джон Коффи оказывается в блоке смертников тюрьмы «Холодная гора». Вновь прибывший обладал поразительным ростом и был пугающе спокоен, что, впрочем, никак не влияло на отношение к нему начальника блока Пола Эджкомба, привыкшего исполнять приговор. Гигант удивил всех позже, когда выяснилось, что он обладает невероятной магической силой…",
     genreIds = GenreIdsList(listOf(1, 2, 3, 4)) // Привязка по id
 )
 
