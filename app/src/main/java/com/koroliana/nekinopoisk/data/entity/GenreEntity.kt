@@ -1,4 +1,4 @@
-package com.koroliana.nekinopoisk.data.local.entity
+package com.koroliana.nekinopoisk.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

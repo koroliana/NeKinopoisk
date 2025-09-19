@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.koroliana.nekinopoisk.data.local.entity.Film
+import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.ui.theme.NeKinopoiskTheme
 
 class FilmDetailsFragment : Fragment() {

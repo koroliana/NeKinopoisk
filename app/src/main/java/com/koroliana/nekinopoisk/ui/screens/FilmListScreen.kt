@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.koroliana.nekinopoisk.data.local.entity.Film
+import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.ui.components.FilmCard
 import com.koroliana.nekinopoisk.ui.components.ScreenHeader
 import com.koroliana.nekinopoisk.ui.theme.HighlightYellow
@@ -161,5 +161,3 @@ fun FilmListScreen(
         }
     }
 }
-
-

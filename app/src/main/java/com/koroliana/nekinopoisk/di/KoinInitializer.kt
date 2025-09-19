@@ -13,7 +13,11 @@ class KoinInitializer(
             androidLogger()
             androidContext(context)
             modules(
-                viewModelModule
+                networkModule,
+                viewModelModule,
+                databaseModule,
+                daoModule,
+                repositoryModule
             )
         }
     }
