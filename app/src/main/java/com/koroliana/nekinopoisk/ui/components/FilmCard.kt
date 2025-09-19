@@ -16,13 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.koroliana.nekinopoisk.data.entity.Film
 import com.koroliana.nekinopoisk.R
+import com.koroliana.nekinopoisk.data.entity.Film
 
 
 @Composable
@@ -60,7 +59,7 @@ fun FilmCard(
 
         Text(
             text = film.localizedName,
-            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.bodyLarge,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )

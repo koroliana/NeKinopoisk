@@ -31,7 +31,7 @@ val AppTypography = Typography(
     ),
     bodyLarge = TextStyle( // Название фильма
         fontFamily = robotoFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight(700),
         fontSize = 16.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp,

@@ -122,7 +122,7 @@ fun FilmListScreen(
                     item {
                         Text(
                             text = "Жанры",
-                            style = MaterialTheme.typography.headlineSmall,
+                            style = MaterialTheme.typography.titleMedium,
                             modifier = Modifier
                                 .padding(start = 16.dp)
                                 .height(40.dp)
@@ -153,7 +153,7 @@ fun FilmListScreen(
                                 ) {
                                     Text(
                                         text = genre.name.replaceFirstChar { it.uppercaseChar() },
-                                        style = MaterialTheme.typography.bodyLarge
+                                        style = MaterialTheme.typography.bodyMedium
                                     )
                                 }
                             }
@@ -167,11 +167,10 @@ fun FilmListScreen(
                     item {
                         Text(
                             text = "Фильмы",
-                            style = MaterialTheme.typography.headlineSmall,
+                            style = MaterialTheme.typography.titleMedium,
                             modifier = Modifier
                                 .padding(start = 16.dp)
-                                .height(40.dp),
-                            color = MainBlue
+                                .height(40.dp)
                         )
                     }
 

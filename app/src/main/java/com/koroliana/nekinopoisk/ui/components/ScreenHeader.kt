@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -19,8 +17,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.koroliana.nekinopoisk.R
 import com.koroliana.nekinopoisk.ui.theme.MainBlue
 import com.koroliana.nekinopoisk.ui.theme.White
 
@@ -48,7 +48,7 @@ fun ScreenHeader(
                     .size(24.dp)
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    painter = painterResource(id = R.drawable.arrow_left_25),
                     contentDescription = "Back",
                     tint = White
                 )
